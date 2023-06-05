@@ -32,8 +32,13 @@ A positive net worth is important for several reasons:
 - Retirement planning: A positive net worth is an important factor in retirement planning. It indicates that you have accumulated enough wealth to support yourself in retirement and maintain your standard of living.
 
 In summary, a positive net worth is an important financial indicator that can provide financial stability, open up investment opportunities, improve creditworthiness, and support retirement planning.
-
-
 """
 
+
 st.markdown(explanation_md)
+
+
+
+
+
+

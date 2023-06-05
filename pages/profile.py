@@ -192,14 +192,14 @@ if user_name:
 
 
     yrs = 10
-    assets_tl = assets_timeline(ini_cash=4000, cars=cars, freq='Monthly', years_projection=yrs, home=None, save=500, inflation=True)
-    liabilities_tl = liabilities_timeline(floans, years_projection=yrs)
+    liabilities_tl, cf_change = liabilities_timeline(floans, years_projection=yrs)
+    assets_tl = assets_timeline(ini_cash=4000, cars=cars, freq='Monthly', years_projection=yrs, home=None, save=500, inflation=True, cash_flow_change=cf_change)
 
     balance_sheet_tl = pd.concat([assets_tl['total_asset'], liabilities_tl['total_liability']], axis=1)
     balance_sheet_tl = balance_sheet_tl.sort_index()
     balance_sheet_tl['net_worth'] = balance_sheet_tl['total_asset'] - balance_sheet_tl['total_liability']
     balance_sheet_tl = balance_sheet_tl.dropna()
-    st.write(balance_sheet_tl)
+    st.header('Evolution of net worth over time')
 
     fig, ax = plt.subplots()
     sns.lineplot(data=balance_sheet_tl, ax=ax)
@@ -229,10 +229,15 @@ if user_name:
     profile['cars'] = cars
 
     # Save user data to a JSON file
+    st.write('Save prifle as a json file and upload on the plan page.')
     if st.button("Save Profile"):
         save_profile(profile, path=f"profiles/{profile['user_name']}.json")
         st.success("Profile saved!")
         st.success("Now, go to the plan page and upload your file to build a financial plan!")
+
+
+
+
 
 # # st.write(cash_flow_profile)
 
