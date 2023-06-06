@@ -105,6 +105,7 @@ def liabilities_timeline(floans, years_projection):
 
     # Fixed loans
     for fl in floans:
+        fl = eval(fl)
         freq = fl.frequency
         #freq converted to days
         timeline_days = np.arange(0, total_days, days_frequency(freq))
